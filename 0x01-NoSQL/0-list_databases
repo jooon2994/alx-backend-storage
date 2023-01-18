@@ -1,0 +1,24 @@
+const MongoClient = require('mongodb').MongoClient;
+
+const url = 'mongodb://localhost:27017';
+const client = new MongoClient(url, { useNewUrlParser: true });
+
+client.connect((err) => {
+  if (err) {
+    console.log('Error connecting to MongoDB:', err);
+    return;
+  }
+
+  console.log('Connected to MongoDB');
+  const adminDb = client.db('admin').admin();
+  adminDb.listDatabases((err, dbs) => {
+    if (err) {
+      console.log('Error listing databases:', err);
+      return;
+    }
+
+    console.log('Databases:', dbs.databases);
+    client.close();
+  });
+});
+
