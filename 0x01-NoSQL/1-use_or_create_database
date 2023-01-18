@@ -1,15 +1,2 @@
-const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017';
-const client = new MongoClient(url, { useNewUrlParser: true });
-
-client.connect((err) => {
-  if (err) {
-    console.log('Error connecting to MongoDB:', err);
-    return;
-  }
-  console.log("Connected to MongoDB!")
-  const my_db = client.db("my_db");
-  console.log("Database created or connected: my_db")
-  client.close();
-});
-
+// create or use a database
+use my_db
